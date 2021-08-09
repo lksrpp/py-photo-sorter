@@ -2,14 +2,11 @@
 # Photo Sorter
 #
 
-# TODO Documentation
-# only analyzes photos on the highest level, without subfolders
-# .mov files with the same name will be copies in alignment with corresponding images(some iphone "live" images are backed up with image and video separately)
-# 
 
 #
 # Imports
 #
+
 import os
 import shutil
 import exifread #https://pypi.org/project/ExifRead/
@@ -23,8 +20,8 @@ from datetime import datetime
 def get_exif_create_date(file_path):
     photo = open(file_path, 'rb')
     exif_data = exifread.process_file(photo, stop_tag="EXIF DateTimeOriginal", details=False)
-    creation_date = exif_data['EXIF DateTimeOriginal']
     photo.close()
+    creation_date = exif_data['EXIF DateTimeOriginal']
     return creation_date
 
 def get_file_mod_date(file_path):
@@ -59,12 +56,15 @@ if __name__ == "__main__":
         for entry in dir:
             if entry.is_file() and entry.name.endswith(("HEIC", "JPEG", "jpeg", "JPG", "jpg")):
                 
-                # TODO add code for images without exif data
+                try:
+                    creation_year, creation_month = get_creation_year_month(get_exif_create_date(entry.path))
+                except KeyError:
+                    print("Warning: no exif data, use modification date for file", entry.path)
+                    creation_year, creation_month = get_creation_year_month(get_file_mod_date(entry.path))
 
-                creation_year, creation_month = get_creation_year_month(get_exif_create_date(entry.path))
                 create_strucutre_copy_file(entry.path, os.path.join(target_directory, creation_year, creation_month))
 
-            elif entry.is_file() and entry.name.endswith(("MOV", "mov")):
+            elif entry.is_file() and entry.name.endswith(("MOV", "mov", "mp4")):
 
                 creation_year, creation_month = get_creation_year_month(get_file_mod_date(entry.path))
                 create_strucutre_copy_file(entry.path, os.path.join(target_directory, creation_year, creation_month))
