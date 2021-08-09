@@ -6,7 +6,7 @@ I created this script to quickly create a new year-month strucutre for a large a
 
 # Usage
 1. Clone this repository to a local directory
-2. Install dependency package [exifread][https://pypi.org/project/ExifRead/] to your (virtual) environment (eg, pip install exifread)
+2. Install dependency package [exifread](https://pypi.org/project/ExifRead/) to your (virtual) environment (eg, pip install exifread)
 3. Specify the absolute path to the source directory (line 53), that includes the photos & videos you would like to sort
     * The script only works with photos with ending "HEIC", "JPEG", "jpeg", "JPG", or "jpg", and videos with ending "MOV", "mov", or "mp4".
     * You can change the file types in case you want to consider additional files.
