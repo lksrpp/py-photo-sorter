@@ -2,7 +2,7 @@
 This repository features a small python script to sort photos and videos based on their creation date in a year-month folder structure.
 
 # Background & use case
-I created this script to quickly create a new year-month strucutre for a large amount of photos and some video files located in one common folder. The new structure is ideal to store photos and videos on your Synology NAS, eg, at the DS Photos application directory.
+I created this script to quickly create a new year-month strucutre for a large amount of photos and some video files located in one common folder. The new structure is ideal to store photos and videos on your Synology NAS, eg, at the Synology Photos application directory.
 
 # Usage
 1. Clone this repository to a local directory
