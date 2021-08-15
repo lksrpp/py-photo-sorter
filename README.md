@@ -11,7 +11,8 @@ I created this script to quickly create a new year-month strucutre for a large a
     * The script only works with photos with ending "HEIC", "JPEG", "jpeg", "JPG", or "jpg", and videos with ending "MOV", "mov", or "mp4".
     * You can change the file types in case you want to consider additional files.
     * Subfolders are ignored.
-4. Specify the target directory (line 52), where the sorted images should be copied to. As per default, a new directory "photo_sorted" is created within the source directory.
-5. Run the script
+4. Specify the target directory (line 52), where the sorted photos should be copied to. As per default, a new directory "photo_sorted" is created within the source directory.
+    * The script copies photos in a folder structure based on their creation date (eg, /photo_sorted/2020/08/).
     * For photos, the script tries to derive the creation date based on exif data. In case the exif data is not set, the fallback option is the modified date.
-    * For videos, the script derives the creation date based on the modified date of the file
+    * For videos, the script derives the creation date based on the modified date of the file.
+5. Run the script
