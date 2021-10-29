@@ -33,7 +33,7 @@ def get_creation_year_month(timestamp):
     creation_month = creation_date.strftime("%m")
     return creation_year, creation_month
 
-def create_strucutre_copy_file(source_filepath, target_subdirectory):
+def create_structure_copy_file(source_filepath, target_subdirectory):
     os.makedirs(target_subdirectory, exist_ok=True)
     shutil.copy(source_filepath, target_subdirectory)
     print("copied", source_filepath, "to", target_subdirectory)
@@ -62,12 +62,12 @@ if __name__ == "__main__":
                     print("Warning: no exif data, use modification date for file", entry.path)
                     creation_year, creation_month = get_creation_year_month(get_file_mod_date(entry.path))
 
-                create_strucutre_copy_file(entry.path, os.path.join(target_directory, creation_year, creation_month))
+                create_structure_copy_file(entry.path, os.path.join(target_directory, creation_year, creation_month))
 
             elif entry.is_file() and entry.name.endswith(("MOV", "mov", "mp4")):
 
                 creation_year, creation_month = get_creation_year_month(get_file_mod_date(entry.path))
-                create_strucutre_copy_file(entry.path, os.path.join(target_directory, creation_year, creation_month))
+                create_structure_copy_file(entry.path, os.path.join(target_directory, creation_year, creation_month))
 
             else:
                 continue
